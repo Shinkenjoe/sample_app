@@ -2,9 +2,13 @@ require 'spec_helper'
 
 describe "StaticPages" do
   describe "Home Page" do
-    it "should have the right title  Home '" do
+    it "should have the right title" do
       visit '/static_pages/home'
-      expect(page.title).to eql ('Sample App | Home')
+      expect(page.title).to eql ('Sample App')
+    end
+    it "should have only the custom title" do
+      visit '/static_pages/home'
+      expect(page.title).not_to match (/\| Home/)
     end
     it "should have the content 'Sample App'" do
       visit '/static_pages/home'
